@@ -1,8 +1,8 @@
 """
-.. module:: company.package.version
+.. module:: kerfi.version
     :platform: Unix
     :synopsis: Version module.
 
-.. moduleauthor:: Your Name <email address>
+.. moduleauthor:: Pedro Salgado <steenzout@ymail.com>
 """
 __version__ = '0.0.1'
