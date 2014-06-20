@@ -10,7 +10,7 @@ import unittest
 from kerfi.logging import DEFAULT_CONFIG_FILE
 
 
-class LoadConfigurationTestCase(unittest.TestCase):
+class LoadLoggingConfigurationTestCase(unittest.TestCase):
     """
     Tests for the kerfi.logging.load_configuration() function.
     """
