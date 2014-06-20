@@ -18,4 +18,6 @@ setup(name='kerfi-vangasvipur',
       url='https://github.com/steenzout/python-kerfi-vangasvipur',
       packages=find_packages(exclude=('*.tests', '*.tests.*', 'tests.*', 'tests')),
       install_requires=[str(pkg.req) for pkg in parse_requirements('requirements.txt')],
-      tests_requires=[str(pkg.req) for pkg in parse_requirements('test-requirements.txt')],)
+      tests_requires=[str(pkg.req) for pkg in parse_requirements('test-requirements.txt')],
+      scripts=(
+          'scripts/kv-print'),)
