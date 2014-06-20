@@ -63,3 +63,14 @@ def load_raw(stream):
             LOGGER.error('Error processing line %s!', line, exc_info=True)
 
     return o
+
+
+def load_xml(stream):
+    """
+    Loads the system profiler XML content into a data structure.
+
+    :param stream: the input stream.
+    :return: the system profiler data structure.
+    :rtype: dict
+    """
+    return None
