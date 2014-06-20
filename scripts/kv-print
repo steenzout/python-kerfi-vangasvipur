@@ -45,9 +45,15 @@ if __name__ == '__main__':
 
     if not len(args) > 0:
         parser.print_usage()
-        parser.print_help()
         sys.exit(os.EX_USAGE)
 
     if options.stream is not None:
         with open(options.stream, 'r') as f:
             commandline.print_properties(f, args, input_format=options.format)
+    else:
+        if options.format == commandline.AUTO:
+            sys.stderr.write('If input is stdin you must specify the -t format option!\n\n')
+            parser.print_usage()
+            sys.exit(os.EX_USAGE)
+
+        commandline.print_properties(sys.stdin, args, input_format=options.format)
