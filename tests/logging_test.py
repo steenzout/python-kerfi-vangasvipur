@@ -12,7 +12,7 @@ from kerfi.logging import DEFAULT_CONFIG_FILE
 
 class LoadLoggingConfigurationTestCase(unittest.TestCase):
     """
-    Tests for the kerfi.logging.load_configuration() function.
+    Test case for the kerfi.logging.load_configuration() function.
     """
 
     def setUp(self):
@@ -55,7 +55,7 @@ class LoadLoggingConfigurationTestCase(unittest.TestCase):
 
     def test_nofile(self):
         """
-        Test kerfi.logging.logging.load_configuration() when the configuration file doesn't exist.
+        Test kerfi.logging.load_configuration() when the configuration file doesn't exist.
         """
         self.mock_path.exists.return_value = True
         self.mock_path.isfile.return_value = False
@@ -73,7 +73,7 @@ class LoadLoggingConfigurationTestCase(unittest.TestCase):
 
     def test_errors(self):
         """
-        Test kerfi.logging.logging.load_configuration() when errors are raised.
+        Test kerfi.logging.load_configuration() when errors are raised.
         """
         self.mock_path.exists.return_value = True
         self.mock_path.isfile.return_value = True
