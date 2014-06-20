@@ -38,13 +38,13 @@ class LoadLoggingConfigurationTestCase(unittest.TestCase):
 
     def test(self):
         """
-        Test kerfi.logging.logging.load_configuration().
+        Test kerfi.logging.load_configuration().
         """
         self.mock_path.exists.return_value = True
         self.mock_path.isfile.return_value = True
         self.mock_fileConfig.return_value = None
 
-        kerfi.logging.logging.load_configuration()
+        kerfi.logging.load_configuration()
 
         self.mock_path.exists.assert_called_once_with(DEFAULT_CONFIG_FILE)
         self.mock_path.isfile.assert_called_once_with(DEFAULT_CONFIG_FILE)
@@ -61,7 +61,7 @@ class LoadLoggingConfigurationTestCase(unittest.TestCase):
         self.mock_path.isfile.return_value = False
 
         with pytest.raises(ValueError):
-            kerfi.logging.logging.load_configuration()
+            kerfi.logging.load_configuration()
 
         self.mock_path.exists.assert_called_once_with(DEFAULT_CONFIG_FILE)
         self.mock_path.isfile.assert_called_once_with(DEFAULT_CONFIG_FILE)
@@ -80,7 +80,7 @@ class LoadLoggingConfigurationTestCase(unittest.TestCase):
         self.mock_fileConfig.side_effect = ValueError('fake error')
 
         with pytest.raises(ValueError):
-            kerfi.logging.logging.load_configuration()
+            kerfi.logging.load_configuration()
 
         self.mock_path.exists.assert_called_once_with(DEFAULT_CONFIG_FILE)
         self.mock_path.isfile.assert_called_once_with(DEFAULT_CONFIG_FILE)
