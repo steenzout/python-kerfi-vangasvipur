@@ -27,7 +27,7 @@ def cleanup_property(key):
     :return: a cleaned up key.
     :rtype: str
     """
-    return key.strip().replace(' ', '_')
+    return key.split(':')[0].strip().replace(' ', '_')
 
 
 def load_raw(stream):
@@ -41,6 +41,7 @@ def load_raw(stream):
     o = {}
     namespace = []
     for line in stream.readline():
+        LOGGER.debug('line = %s', line)
         try:
             if line[0] != ' ':
                 namespace = [line.split(':')[0]]

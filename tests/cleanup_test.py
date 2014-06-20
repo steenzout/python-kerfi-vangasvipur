@@ -12,4 +12,4 @@ class CleanupPropertyTestCase(tests.BaseTestCase):
         """
         Tests the kerfi.cleanup_property() function.
         """
-        self.assertEquals('key_key', kerfi.cleanup_property(' key key '))
+        self.assertEquals('key_key', kerfi.cleanup_property(' key key: '))
