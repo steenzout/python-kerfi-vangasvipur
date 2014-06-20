@@ -57,7 +57,7 @@ def load_raw(stream):
                 o['%s.%s' % ('.'.join(namespace), prop)] = value
 
             elif line[0:4] == '    ':
-                namespace.append(cleanup_property(line))
+                namespace = [namespace[0], cleanup_property(line)]
 
         except StandardError:
             LOGGER.error('Error processing line %s!', line, exc_info=True)

@@ -11,7 +11,8 @@ class LoadRawTestCase(tests.BaseTestCase):
     def test(self):
         expected = {
             'Accessibility.Accessibility_Information.Cursor_Magnification': 'Off',
-            'Applications.Installer.Version': '9.0.11'}
+            'Applications.Installer.Version': '9.0.11',
+            'Applications.Console.Version': '10.9'}
 
         with open('tests/input.txt', 'r') as f:
             result = kerfi.load_raw(f)
