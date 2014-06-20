@@ -32,7 +32,6 @@ class PrintPropertiesTestCase(tests.BaseTestCase):
             mock.call('prop2\t2\n'),
             mock.call('single\t3\n')], any_order=True)
 
-
     @mock.patch('sys.stdout.write', autospec=True)
     @mock.patch('kerfi.load_xml')
     def test_xml(self, mock_load_xml, mock_stdout):
