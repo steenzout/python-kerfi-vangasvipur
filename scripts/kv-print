@@ -20,18 +20,18 @@ def get_parser():
     p = OptionParser(usage=usage)
 
     p.add_option('-t', '--format',
-        action='store', dest='format', default='auto',
-        help='the system_profiler output format (auto|raw|xml).')
+                 action='store', dest='format', default=commandline.AUTO,
+                 help='the system_profiler output format (auto|raw|xml).')
     p.add_option('-f', '--file',
-        action='store', dest='stream', default=None,
-        help='in case you want to read system_profiler output from a file.')
+                 action='store', dest='stream', default=None,
+                 help='in case you want to read system_profiler output from a file.')
 
     p.add_option('-v', '--verbose',
-        action='store_true', dest='verbose', default=False,
-        help='explain what is being done.')
+                 action='store_true', dest='verbose', default=False,
+                 help='explain what is being done.')
     p.add_option('-V', '--version',
-        action='store_true', dest='version', default=False,
-        help='displays information about this command line tool and the version it uses.')
+                 action='store_true', dest='version', default=False,
+                 help='displays information about this command line tool and the version it uses.')
     return p
 
 
@@ -43,10 +43,11 @@ if __name__ == '__main__':
         commandline.print_version()
         sys.exit(os.EX_OK)
 
-    if not len(args) == 5:
+    if not len(args) > 0:
         parser.print_usage()
         parser.print_help()
         sys.exit(os.EX_USAGE)
 
     if options.stream is not None:
-        commandline.parse_output()
+        with open(options.stream, 'r') as f:
+            commandline.print_properties(f, args, input_format=options.format)
