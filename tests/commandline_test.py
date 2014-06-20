@@ -43,7 +43,7 @@ class PrintPropertiesTestCase(tests.BaseTestCase):
             'other_prop': '0', 'prop1': '1', 'prop2': '2', 'single': 3}
 
         with open('tests/input.txt', 'r') as f:
-            commandline.print_properties(f, ['single', 'prop.*', 'none'], format=kerfi.commandline.XML)
+            commandline.print_properties(f, ['single', 'prop.*', 'none'], input_format=kerfi.commandline.XML)
 
             mock_load_xml.assert_called_once(f)
 
