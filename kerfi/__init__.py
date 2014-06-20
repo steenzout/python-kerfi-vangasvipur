@@ -46,10 +46,10 @@ def load_raw(stream):
             if line[0] != ' ':
                 namespace = [line.split(':')[0]]
             elif line[0:6] == '      ':
-                property, value = line.split(':')
-                property = cleanup_property(property)
+                prop, value = line.split(':')
+                prop = cleanup_property(prop)
                 value = value.strip()
-                o['%s.%s' % ('.'.join(namespace), property)] = value
+                o['%s.%s' % ('.'.join(namespace), prop)] = value
 
             elif line[0:3] == '    ':
                 namespace.append(line[3:])
