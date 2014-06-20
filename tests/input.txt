@@ -1,0 +1,69 @@
+Accessibility:
+
+    Accessibility Information:
+
+      Cursor Magnification: Off
+      Display: Black on White
+      Flash Screen: Off
+      Mouse Keys: Off
+      Slow Keys: Off
+      Sticky Keys: Off
+      VoiceOver: Off
+      Zoom Mode: Full Screen
+      Contrast: 0
+      Keyboard Zoom: Off
+      Scroll Zoom: Off
+
+Applications:
+
+    Installer:
+
+      Version: 9.0.11
+      Obtained from: Identified Developer
+      Last Modified: 6/5/14, 9:07 AM
+      Kind: Intel
+      64-Bit (Intel): Yes
+      Signed by: Developer ID Application: Sophos, Developer ID Certification Authority, Apple Root CA
+      Location: /Library/Application Support/Sophos/he/Installer.app
+      Get Info String: Sophos Anti-Virus for Mac Copyright © 1993-2014 Sophos Ltd. All rights reserved.
+
+    Console:
+
+      Version: 10.9
+      Obtained from: Apple
+      Last Modified: 5/30/14, 9:23 AM
+      Kind: Intel
+      64-Bit (Intel): Yes
+      Signed by: Software Signing, Apple Code Signing Certification Authority, Apple Root CA
+      Location: /Applications/Utilities/Console.app
+
+    Safari:
+
+      Version: 7.0.4
+      Obtained from: Apple
+      Last Modified: 5/30/14, 2:25 PM
+      Kind: Intel
+      64-Bit (Intel): Yes
+      Signed by: Software Signing, Apple Code Signing Certification Authority, Apple Root CA
+      Location: /Applications/Safari.app
+      Get Info String: 7.0.4, Copyright © 2003-2014 Apple Inc.
+
+    Xcode:
+
+      Version: 5.1.1
+      Obtained from: Mac App Store
+      Last Modified: 4/14/14, 8:58 AM
+      Kind: Intel
+      64-Bit (Intel): Yes
+      Signed by: Apple Mac OS Application Signing, Apple Worldwide Developer Relations Certification Authority, Apple Root CA
+      Location: /Applications/Xcode.app
+
+    App Store:
+
+      Version: 1.3
+      Obtained from: Apple
+      Last Modified: 5/30/14, 9:23 AM
+      Kind: Intel
+      64-Bit (Intel): Yes
+      Signed by: Software Signing, Apple Code Signing Certification Authority, Apple Root CA
+      Location: /Applications/App Store.app
