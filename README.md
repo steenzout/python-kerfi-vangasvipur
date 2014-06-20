@@ -15,6 +15,30 @@ It uses:
 - [Sphinx](http://sphinx-doc.org) for documentation
 
 
+## usage
+
+### kv-print
+
+Using stdout:
+```
+$ cat tests/input.txt | kv-print -t raw "Applications.Console.Version"
+Applications.Console.Version	10.9
+```
+
+Using a file and a regular expression:
+```
+$ kv-print -f tests/input.txt "Applications.*" |grep Console
+Applications.Console.Location	/Applications/Utilities/Console.app
+Applications.Console.Kind	Intel
+Applications.Console.64-Bit_(Intel)	Yes
+Applications.Console.Version	10.9
+Applications.Console.Obtained_from	Apple
+Applications.Console.Signed_by	Software Signing, Apple Code Signing Certification Authority, Apple Root CA
+```
+
+When using a file as input you don't need to set the format option.
+
+
 ## kerfi
 
 Kerfi means in system in icelandic.
