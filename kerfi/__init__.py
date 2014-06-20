@@ -43,16 +43,22 @@ def load_raw(stream):
     for line in stream.readlines():
         LOGGER.debug('line = %s', line)
         try:
-            if line[0] != ' ':
+            if line == '\n':
+                # blank line
+                continue
+
+            elif line[0] != ' ':
                 namespace = [line.split(':')[0]]
+
             elif line[0:6] == '      ':
                 prop, value = line.split(':')
                 prop = cleanup_property(prop)
                 value = value.strip()
                 o['%s.%s' % ('.'.join(namespace), prop)] = value
 
-            elif line[0:3] == '    ':
-                namespace.append(line[3:])
+            elif line[0:4] == '    ':
+                namespace.append(cleanup_property(line))
+
         except StandardError:
             LOGGER.error('Error processing line %s!', line, exc_info=True)
 
