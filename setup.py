@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import kerfi.package
+import kerfi
 
 
 from pip.req import parse_requirements
@@ -9,7 +9,7 @@ from pip.req import parse_requirements
 from setuptools import find_packages, setup
 
 setup(name='kerfi-vangasvipur',
-      version=kerfi.package.__version__,
+      version=kerfi.__version__,
       description='Python tools to manipulate information retrieved from OSX system_profiler.',
       author='Pedro Salgado',
       author_email='steenzout@ymail.com',
