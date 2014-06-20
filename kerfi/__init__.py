@@ -40,7 +40,7 @@ def load_raw(stream):
     """
     o = {}
     namespace = []
-    for line in stream.readline():
+    for line in stream.readlines():
         LOGGER.debug('line = %s', line)
         try:
             if line[0] != ' ':

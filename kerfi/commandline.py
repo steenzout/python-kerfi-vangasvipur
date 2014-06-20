@@ -22,7 +22,7 @@ def print_properties(stream, properties, format=AUTO):
     else:
         fmt = None
 
-    for line in stream:
+    for line in stream.readlines():
         if fmt is None:
             if line.startswith('<?xml'):
                 fmt = XML
