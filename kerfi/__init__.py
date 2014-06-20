@@ -6,4 +6,53 @@
 .. moduleauthor:: Pedro Salgado <steenzout@ymail.com>
 """
 
+from __future__ import absolute_import
+
+
+import logging
+
+
 from kerfi.version import __version__
+
+
+LOGGER = logging.getLogger(__name__)
+
+
+def cleanup_property(key):
+    """
+    Cleans the given key by removing whitespace from beginning/end of it and
+    replacing any other whitespace by the underscore character.
+
+    :param key: the key.
+    :return: a cleaned up key.
+    :rtype: str
+    """
+    return key.strip().replace(' ', '_')
+
+
+def load_raw(stream):
+    """
+    Loads the system profiler raw content into a data structure.
+
+    :param stream: the input stream.
+    :return: the system profiler data structure.
+    :rtype: dict
+    """
+    o = {}
+    namespace = []
+    for line in stream.readline():
+        try:
+            if line[0] != ' ':
+                namespace = [line.split(':')[0]]
+            elif line[0:6] == '      ':
+                property, value = line.split(':')
+                property = cleanup_property(property)
+                value = value.strip()
+                o['%s.%s' % ('.'.join(namespace), property)] = value
+
+            elif line[0:3] == '    ':
+                namespace.append(line[3:])
+        except StandardError:
+            LOGGER.error('Error processing line %s!', line, exc_info=True)
+
+    return o
