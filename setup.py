@@ -20,4 +20,4 @@ setup(name='kerfi-vangasvipur',
       install_requires=[str(pkg.req) for pkg in parse_requirements('requirements.txt')],
       tests_requires=[str(pkg.req) for pkg in parse_requirements('test-requirements.txt')],
       scripts=(
-          'scripts/kv-print'),)
+          'scripts/kv-print',),)
