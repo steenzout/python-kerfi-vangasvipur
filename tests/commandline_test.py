@@ -39,7 +39,7 @@ class PrintPropertiesTestCase(tests.BaseTestCase):
         """
         Tests kerfi.commandline.print_properties() writes the expected message to stdout.
         """
-        mock_load_raw.return_value = {
+        mock_load_xml.return_value = {
             'other_prop': '0', 'prop1': '1', 'prop2': '2', 'single': 3}
 
         with open('tests/input.txt', 'r') as f:
