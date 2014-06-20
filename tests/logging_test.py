@@ -12,15 +12,15 @@ from kerfi.logging import DEFAULT_CONFIG_FILE
 
 class LoadConfigurationTestCase(unittest.TestCase):
     """
-    Tests for the kerfi.logging.logging.load_configuration() function.
+    Tests for the kerfi.logging.load_configuration() function.
     """
 
     def setUp(self):
         # mock of logging.RootLogger
-        self.patch_get_logger = mock.patch('kerfi.logging.logging.logging.getLogger', autospec=True)
+        self.patch_get_logger = mock.patch('kerfi.logging.getLogger', autospec=True)
         self.mock_get_logger = self.patch_get_logger.start()
 
-        self.patch_root_logger = mock.patch('kerfi.logging.logging.logging.RootLogger', autospec=True)
+        self.patch_root_logger = mock.patch('kerfi.logging.RootLogger', autospec=True)
         self.mock_root_logger = self.patch_root_logger.start()
         self.mock_get_logger.return_value = self.mock_root_logger
 
