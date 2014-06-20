@@ -6,9 +6,16 @@
 .. moduleauthor:: Pedro Salgado <steenzout@ymail.com>
 """
 
+import os
+
+import kerfi.logging
+
 import logging
 
 import unittest
+
+
+LOGGING_CONFIG_FILE = '%s/tests/logging.conf' % os.curdir
 
 
 class Basic(object):
@@ -31,6 +38,8 @@ class Basic(object):
         It will also load (once) the test logging configuration.
         """
         logging.getLogger('%s.%s' % (__name__, 'Basic')).info('setup_logger()')
+
+        kerfi.logging.load_configuration(LOGGING_CONFIG_FILE)
 
         self.logger = logging.getLogger('%s.%s' % (__name__, self.__class__.__name__))
 

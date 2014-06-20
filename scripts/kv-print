@@ -1,0 +1,52 @@
+#!/usr/bin/env python
+"""
+This command-line tool has the ability to parse system_profiler output.
+
+.. author:: Pedro Salgado <steenzout@ymail.com>
+"""
+
+import sys
+
+import os
+
+
+from kerfi import commandline
+
+from optparse import OptionParser
+
+
+def get_parser():
+    usage = 'usage: %prog [options] <property 1> <...> <property N>'
+    p = OptionParser(usage=usage)
+
+    p.add_option('-t', '--format',
+        action='store', dest='format', default='auto',
+        help='the system_profiler output format (auto|raw|xml).')
+    p.add_option('-f', '--file',
+        action='store', dest='stream', default=None,
+        help='in case you want to read system_profiler output from a file.')
+
+    p.add_option('-v', '--verbose',
+        action='store_true', dest='verbose', default=False,
+        help='explain what is being done.')
+    p.add_option('-V', '--version',
+        action='store_true', dest='version', default=False,
+        help='displays information about this command line tool and the version it uses.')
+    return p
+
+
+if __name__ == '__main__':
+    parser = get_parser()
+    (options, args) = parser.parse_args()
+
+    if options.version:
+        commandline.print_version()
+        sys.exit(os.EX_OK)
+
+    if not len(args) == 5:
+        parser.print_usage()
+        parser.print_help()
+        sys.exit(os.EX_USAGE)
+
+    if options.stream is not None:
+        commandline.parse_output()
