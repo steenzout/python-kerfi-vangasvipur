@@ -9,7 +9,7 @@ from pip.req import parse_requirements
 from setuptools import find_packages, setup
 
 setup(name='kerfi-vangasvipur',
-      version=kerfi.__version__,
+      version=kerfi.version(),
       description='Python tools to manipulate information retrieved from OSX system_profiler.',
       author='Pedro Salgado',
       author_email='steenzout@ymail.com',
