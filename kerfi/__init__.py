@@ -54,24 +54,33 @@ def load_raw(stream):
     """
     o = {}
     namespace = []
+    levels = [0]
     for line in stream.readlines():
         LOGGER.debug('line = %s', line)
         try:
-            if line == '\n':
-                # blank line
-                continue
-
-            elif line[0] != ' ':
-                namespace = [line.split(':')[0]]
-
-            elif line[0:6] == '      ':
+            if line != '\n':
                 prop, value = line.split(':')
+                lenprop1 = len(prop)
                 prop = cleanup_property(prop)
+                lenprop2 = len(prop)
+                thislevel = lenprop1 - lenprop2
                 value = value.strip()
-                o['%s.%s' % ('.'.join(namespace), prop)] = value
 
-            elif line[0:4] == '    ':
-                namespace = [namespace[0], cleanup_property(line)]
+                if thislevel == 0:
+                    namespace = [cleanup_property(prop)]
+                    levels = [0]
+                else:
+                    while thislevel <= levels[-1]:
+                        namespace.pop()
+                        levels.pop()
+                    namespace.append(cleanup_property(prop))
+                    levels.append(thislevel)
+
+                if value != '':
+                    o['.'.join(namespace)] = value
+
+            LOGGER.debug('namespace = %s', namespace)
+            LOGGER.debug('levels = %s', levels)
 
         except StandardError:
             LOGGER.error('Error processing line %s!', line, exc_info=True)
