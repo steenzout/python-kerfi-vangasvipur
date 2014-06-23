@@ -23,10 +23,18 @@
 from __future__ import absolute_import
 
 
+import kerfi.logging
+
 import logging
 
 
 from kerfi.version import __version__
+
+
+try:
+    kerfi.logging.load_configuration()
+except StandardError:
+    logging.getLogger(__name__).addHandler(logging.NullHandler())
 
 
 LOGGER = logging.getLogger(__name__)
