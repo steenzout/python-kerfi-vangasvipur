@@ -1,5 +1,6 @@
 include README.md
 include requirements.txt
 include test-requirements.txt
-recursive-exclude company *.pyc
-recursive-exclude company *.pyo
+recursive-include scripts *.*
+recursive-exclude kerfi *.pyc
+recursive-exclude kerfi *.pyo
