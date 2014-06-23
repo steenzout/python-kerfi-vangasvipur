@@ -59,7 +59,7 @@ def load_raw(stream):
         LOGGER.debug('line = %s', line)
         try:
             if line != '\n':
-                prop, value = line.split(':')
+                prop, value = line.split(':', 1)
                 lenprop1 = len(prop)
                 prop = cleanup_property(prop)
                 lenprop2 = len(prop)
