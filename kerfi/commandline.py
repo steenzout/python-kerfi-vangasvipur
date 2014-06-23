@@ -67,23 +67,26 @@ def print_properties(stream, properties, input_format=AUTO):
 
     LOGGER.debug('input_format=%s fmt=%s', input_format, fmt)
 
-    if len(data) == 0:
+    found = False
+    for key, value in data.iteritems():
+        LOGGER.debug('key %s in properties (%s)? %s', key, properties, key in properties)
+
+        if key in properties:
+            LOGGER.debug('key:value = %s:%s', key, value)
+            sys.stdout.write('%s\t%s\n' % (key, value))
+            found = True
+        else:
+            for prop in properties:
+                LOGGER.debug('re.match %s matches %s? %s', prop, key, re.match(prop, key) is not None)
+
+                if re.match(prop, key):
+                    LOGGER.debug('sys.stdout.write(\'%s\t%s\n\')', key, value)
+                    LOGGER.debug('key:value = %s:%s', key, value)
+                    sys.stdout.write('%s\t%s\n' % (key, value))
+                    found = True
+
+    if not found:
         sys.stdout.write('\n')
-    else:
-        for key, value in data.iteritems():
-            LOGGER.debug('key %s in properties (%s)? %s', key, properties, key in properties)
-
-            if key in properties:
-                LOGGER.debug('key:value = %s:%s', key, value)
-                sys.stdout.write('%s\t%s\n' % (key, value))
-            else:
-                for prop in properties:
-                    LOGGER.debug('re.match %s matches %s? %s', prop, key, re.match(prop, key) is not None)
-
-                    if re.match(prop, key):
-                        LOGGER.debug('sys.stdout.write(\'%s\t%s\n\')', key, value)
-                        LOGGER.debug('key:value = %s:%s', key, value)
-                        sys.stdout.write('%s\t%s\n' % (key, value))
 
 
 def print_version():
