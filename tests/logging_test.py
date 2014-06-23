@@ -1,13 +1,15 @@
-import kerfi.logging
+from __future__ import absolute_import
 
-import mock
 
-import pytest
+import tests.logging
 
 import unittest
 
+import mock
+import pytest
 
-from kerfi.logging import DEFAULT_CONFIG_FILE
+
+from tests.logging import DEFAULT_CONFIG_FILE
 
 
 class LoadLoggingConfigurationTestCase(unittest.TestCase):
@@ -17,17 +19,17 @@ class LoadLoggingConfigurationTestCase(unittest.TestCase):
 
     def setUp(self):
         # mock of logging.RootLogger
-        self.patch_get_logger = mock.patch('kerfi.logging.logging.getLogger', autospec=True)
+        self.patch_get_logger = mock.patch('tests.logging.logging.getLogger', autospec=True)
         self.mock_get_logger = self.patch_get_logger.start()
 
-        self.patch_root_logger = mock.patch('kerfi.logging.logging.RootLogger', autospec=True)
+        self.patch_root_logger = mock.patch('tests.logging.logging.RootLogger', autospec=True)
         self.mock_root_logger = self.patch_root_logger.start()
         self.mock_get_logger.return_value = self.mock_root_logger
 
         self.patch_path_exists = mock.patch('os.path', autospec=True)
         self.mock_path = self.patch_path_exists.start()
 
-        self.patch_fileConfig = mock.patch('kerfi.logging.logging.config.fileConfig', autospec=True)
+        self.patch_fileConfig = mock.patch('tests.logging.logging.config.fileConfig', autospec=True)
         self.mock_fileConfig = self.patch_fileConfig.start()
 
     def tearDown(self):
@@ -61,7 +63,7 @@ class LoadLoggingConfigurationTestCase(unittest.TestCase):
         self.mock_path.isfile.return_value = False
 
         with pytest.raises(ValueError):
-            kerfi.logging.load_configuration()
+            tests.logging.load_configuration()
 
         self.mock_path.exists.assert_called_once_with(DEFAULT_CONFIG_FILE)
         self.mock_path.isfile.assert_called_once_with(DEFAULT_CONFIG_FILE)
