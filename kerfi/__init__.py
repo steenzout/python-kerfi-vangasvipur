@@ -95,3 +95,13 @@ def load_xml(stream):
     :rtype: dict
     """
     return None
+
+
+def version():
+    """
+    Kerfi version.
+
+    :return: the package version.
+    :rtype: str
+    """
+    return __version__
