@@ -34,7 +34,13 @@ from kerfi.version import __version__
 try:
     kerfi.logging.load_configuration()
 except StandardError:
-    logging.getLogger(__name__).addHandler(logging.NullHandler())
+    if 'NullHandler' in logging.__dict__:
+        logging.getLogger(__name__).addHandler(logging.NullHandler())
+    else:
+        class NullHandler(logging.Handler):
+            def emit(self, record):
+                pass
+        logging.getLogger(__name__).addHandler(NullHandler())
 
 
 LOGGER = logging.getLogger(__name__)
