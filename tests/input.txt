@@ -67,3 +67,24 @@ Applications:
       64-Bit (Intel): Yes
       Signed by: Software Signing, Apple Code Signing Certification Authority, Apple Root CA
       Location: /Applications/App Store.app
+
+Locations:
+
+    Automatic:
+
+      Active Location: Yes
+      Services:
+        Bluetooth DUN:
+          Type: PPP
+          IPv4:
+              Configuration Method: PPP
+          IPv6:
+              Configuration Method: Automatic
+          Proxies:
+              FTP Passive Mode: Yes
+          PPP:
+              Verbose Logging: No
+        USB Ethernet:
+          Type: Ethernet
+          BSD Device Name: en4
+          Hardware (MAC) Address: aa:aa:aa:aa:aa:aa
