@@ -12,7 +12,10 @@ class LoadRawTestCase(tests.BaseTestCase):
         expected = {
             'Accessibility.Accessibility_Information.Cursor_Magnification': 'Off',
             'Applications.Installer.Version': '9.0.11',
-            'Applications.Console.Version': '10.9'}
+            'Applications.Console.Version': '10.9',
+            'Locations.Automatic.Active_Location': 'Yes',
+            'Locations.Automatic.Services.Bluetooth_DUN.Type': 'PPP',
+            'Locations.Automatic.Services.USB_Ethernet.Type': 'Ethernet'}
 
         with open('tests/input.txt', 'r') as f:
             result = kerfi.load_raw(f)
@@ -20,5 +23,8 @@ class LoadRawTestCase(tests.BaseTestCase):
         self.logger.debug('result = %s', result)
 
         for key, value in expected.iteritems():
+            self.logger.debug('checking %s', key)
             self.assertTrue(key in result)
+            self.logger.debug('%s found.', key)
             self.assertEquals(value, result[key])
+            self.logger.debug('%s value is equal.', key)
