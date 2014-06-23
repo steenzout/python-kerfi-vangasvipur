@@ -27,7 +27,7 @@ Applications.Console.Version	10.9
 
 Using a file and a regular expression:
 ```
-$ kv-print -f tests/input.txt "Applications.*" |grep Console
+$ kv-print -f tests/input.txt "Applications\.Console.*"
 Applications.Console.Location	/Applications/Utilities/Console.app
 Applications.Console.Kind	Intel
 Applications.Console.64-Bit_(Intel)	Yes
