@@ -29,7 +29,7 @@ import logging.config as config
 import os
 
 
-DEFAULT_CONFIG_FILE = '/etc/kerfi/logging.conf'
+DEFAULT_CONFIG_FILE = 'tests/logging.conf'
 
 
 def init_logging():
@@ -43,8 +43,7 @@ def init_logging():
         class NullHandler(logging.Handler):
             def emit(self, record):
                 pass
-    logging.getLogger('kerfi').addHandler(NullHandler())
-    logging.getLogger(__name__).addHandler(NullHandler())
+    logging.getLogger().addHandler(NullHandler())
 
 
 def load_configuration(config_file=DEFAULT_CONFIG_FILE):
