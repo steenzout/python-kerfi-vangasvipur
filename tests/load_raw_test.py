@@ -15,7 +15,8 @@ class LoadRawTestCase(tests.BaseTestCase):
             'Applications.Console.Version': '10.9',
             'Locations.Automatic.Active_Location': 'Yes',
             'Locations.Automatic.Services.Bluetooth_DUN.Type': 'PPP',
-            'Locations.Automatic.Services.USB_Ethernet.Type': 'Ethernet'}
+            'Locations.Automatic.Services.USB_Ethernet.Type': 'Ethernet',
+            'Locations.Automatic.Services.USB_Ethernet.Hardware_(MAC)_Address': 'aa:aa:aa:aa:aa:aa'}
 
         with open('tests/input.txt', 'r') as f:
             result = kerfi.load_raw(f)
