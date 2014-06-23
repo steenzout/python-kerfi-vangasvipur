@@ -32,20 +32,6 @@ import os
 DEFAULT_CONFIG_FILE = 'tests/logging.conf'
 
 
-def init_logging():
-    """
-    Initializes logging for kerfi packages with a NullHandler to avoid
-    "No handlers could be found for logger" messages.
-    """
-    if 'NullHandler' in logging.__dict__:
-        from logging import NullHandler
-    else:
-        class NullHandler(logging.Handler):
-            def emit(self, record):
-                pass
-    logging.getLogger().addHandler(NullHandler())
-
-
 def load_configuration(config_file=DEFAULT_CONFIG_FILE):
     """
     Loads logging configuration from the given configuration file.
@@ -65,5 +51,3 @@ def load_configuration(config_file=DEFAULT_CONFIG_FILE):
         logging.getLogger(__name__).error('Failed to load configuration from %s!', config_file)
         logging.getLogger(__name__).debug(str(error), exc_info=True)
         raise error
-
-init_logging()
