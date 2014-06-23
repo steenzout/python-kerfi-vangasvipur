@@ -1,19 +1,22 @@
 """
-.. module:: kerfi.tests
+.. module:: tests
     :platform: Unix
     :synopsis:
 
 .. moduleauthor:: Pedro Salgado <steenzout@ymail.com>
 """
 
-import unittest
+from __future__ import absolute_import
 
-import os
-import tests.logging
+
 import logging
 
+import tests.logging
 
-LOGGING_CONFIG_FILE = '%s/tests/logging.conf' % os.curdir
+import unittest
+
+
+tests.logging.load_configuration()
 
 
 class Basic(object):
@@ -36,8 +39,6 @@ class Basic(object):
         It will also load (once) the test logging configuration.
         """
         logging.getLogger('%s.%s' % (__name__, 'Basic')).info('setup_logger()')
-
-        tests.logging.load_configuration(LOGGING_CONFIG_FILE)
 
         self.logger = logging.getLogger('%s.%s' % (__name__, self.__class__.__name__))
 
