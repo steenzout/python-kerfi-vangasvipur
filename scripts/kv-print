@@ -19,10 +19,10 @@ def get_parser():
     usage = 'usage: %prog [options] <property 1> <...> <property N>'
     p = OptionParser(usage=usage)
 
-    p.add_option('-t', '--format',
+    p.add_option('-f', '--format',
                  action='store', dest='format', default=commandline.AUTO,
                  help='the system_profiler output format (auto|raw|xml).')
-    p.add_option('-f', '--file',
+    p.add_option('-F', '--file',
                  action='store', dest='stream', default=None,
                  help='in case you want to read system_profiler output from a file.')
 
