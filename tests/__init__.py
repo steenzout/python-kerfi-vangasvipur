@@ -17,10 +17,10 @@ import logging.config
 import unittest
 
 
-DEFAULT_CONFIG_FILE = 'tests/logging.conf'
+LOGGING_CONFIG_FILE = 'tests/logging.conf'
 
 
-def load_logging_configuration(config_file=DEFAULT_CONFIG_FILE):
+def load_logging_configuration(config_file=LOGGING_CONFIG_FILE):
     """
     Loads logging configuration from the given configuration file.
 
